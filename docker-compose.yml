@@ -1,15 +1,15 @@
 version: "3.5"
 services:
   nwaku:
-    image: "nwaku.dnp.dappnode.eth:0.1.0"
+    image: nwaku.dnp.dappnode.eth:0.1.0
     build:
       context: nwaku
       args:
-        UPSTREAM_VERSION: v0.22.0
+        UPSTREAM_VERSION: v0.31.1
     ports:
-      - "60000:60000/tcp"
-      - "60000:60000/udp"
-      - "9005:9005/udp"
+      - 60000:60000/tcp
+      - 60000:60000/udp
+      - 9005:9005/udp
     environment:
       DNS_DISCOVERY_URL: ""
       LOG_LEVEL: INFO
@@ -19,8 +19,8 @@ services:
       RANDOMIZE_ADDRESS: "true"
       EXPERIMENTAL_FEATURES: "false"
       WAKUNODE2_STORE: "false"
-      WAKUNODE2_STORE_MESSAGE_DB_URL: "sqlite:///data/store.sqlite3"
-      WAKUNODE2_STORE_MESSAGE_RETENTION_POLICY: "time:2592000"
+      WAKUNODE2_STORE_MESSAGE_DB_URL: sqlite:///data/store.sqlite3
+      WAKUNODE2_STORE_MESSAGE_RETENTION_POLICY: time:2592000
       WAKUNODE2_FILTER: "false"
       WAKUNODE2_LIGHTPUSH: "false"
       WAKUNODE2_TOPICS: /waku/2/dev-waku/proto
@@ -28,6 +28,6 @@ services:
       EXTRA_OPTS: ""
     restart: unless-stopped
     volumes:
-      - "nwakudb:/data"
+      - nwakudb:/data
 volumes:
   nwakudb: {}
